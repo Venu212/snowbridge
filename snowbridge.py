@@ -38,7 +38,7 @@ with title_container:
     with col1:
         sb_img = './images/snowbridge.jfif'
         st.image(sb_img, width=120)
-        st.write("")
+        #st.write("")
     with col2:
     	#st.markdown(" ## Hana")
     	col2.markdown(
@@ -115,7 +115,7 @@ def main():
                 #st.markdown("## HANA")
                 hana_tbl = st.text_input("Enter HANA Table")
                 
-                st.write("HANA = ", hana_tbl)
+                #st.write("HANA = ", hana_tbl)
                 hana_data = st.checkbox("Display HANA data")
 
             with ext_col[1]:                    
@@ -124,21 +124,22 @@ def main():
                 #st.markdown("## Snowflake")
                 sf_tbl = st.text_input("Enter Snowflake Table",hana_tbl.split('.')[-1])
                 #sf_tbl = sf_tbl[-2]
-                st.write("SF = ", sf_tbl)
+                #st.write("SF = ", sf_tbl)
                 sf_data = st.checkbox("Display Snowflake data")
         
         extract = st.form_submit_button("Extract")
 
 
         #----------------------------------------------------------------------------
-        if hana_data:
-            hana_cur = connect_hana()
-            df_hana_data = read_data_hana(hana_tbl,hana_cur)
-            st.write(df_hana_data)
-        if sf_data:
-            df_sf_data = read_data_sf(sf_tbl,hana_tbl)
-            st.write(df_sf_data)
-
+      
+        # if hana_data:
+        #     hana_cur = connect_hana()
+        #     df_hana_data = read_data_hana(hana_tbl,hana_cur)
+        #     st.write(df_hana_data.head(10))
+        # if sf_data:
+        #     df_sf_data = read_data_sf(sf_tbl,hana_tbl)
+        #     st.write(df_sf_data)
+        
 
         if extract:
             if hana_data:
@@ -147,6 +148,11 @@ def main():
                 # Read Data
                 df_hana_data = read_data_hana(hana_tbl,hana_cur)
                 st.write(df_hana_data)
+
+            if sf_data:
+                sf_curr = conn_snowflake()
+                df_sf_data = read_data_sf(sf_tbl,sf_curr)
+                st.write(df_sf_data)
                 # Connect to snowflake
                 #connect_snowflake()
                 # Write data to snowflake
