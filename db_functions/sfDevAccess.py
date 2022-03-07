@@ -16,7 +16,7 @@ conn = sf.connect(user = venu.malireddy@servicenow.com
            password = Mvhmvhmvh1@3
            account = servicenow-edpdev.snowflakecomputing.com
     )
-
+#---
 def run_query(connection,query):
     cursor = connection.cursor()
     cursor.execute(query)
