@@ -68,7 +68,7 @@ def read_data_sf(sf_tbl, sf_cur):
 #def read_hana_data(hana_tbl, hana_cur):
     
 
-
+# Snowflake
 '''
 def connectSnowflake:
     create_engine(URL(
